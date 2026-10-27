@@ -1,0 +1,98 @@
+NX-CORE2#show running-config
+Building configuration...
+
+Current configuration : 1303 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname NX-CORE2
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX15246HD3-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description LINK-TO-NX-CORE1
+ ip address 10.255.0.18 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ description LINK-TO-NX-AGG-BIZ
+ ip address 10.255.0.33 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ description ROUTED-LINK-TO-NX-SW-DIST
+ ip address 10.255.0.37 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 10.10.30.0 255.255.255.0 10.255.0.38 
+ip route 10.10.40.0 255.255.255.0 10.255.0.38 
+ip route 10.10.99.0 255.255.255.0 10.255.0.38 
+ip route 100.64.1.0 255.255.255.0 10.255.0.17 
+ip route 100.64.2.0 255.255.255.0 10.255.0.17 
+ip route 10.20.10.0 255.255.255.0 10.255.0.34 
+ip route 10.20.20.0 255.255.255.0 10.255.0.34 
+ip route 10.20.30.0 255.255.255.0 10.255.0.34 
+ip route 203.0.113.0 255.255.255.0 10.255.0.17 
+ip route 0.0.0.0 0.0.0.0 10.255.0.17 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
